@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: "Jura", sans-serif;
+        }
+
+        .main {
+            display: flex;
+            border: 2px;
+            border-radius: 3px;
+
+        }
+
+        .row {
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="3">
+
+
+
+        <tr>
+            <td>
+                <p id="one" onclick="replacer(this.id)">1</p>
+            </td>
+            <td>
+                <p id="two" onclick="replacer(this.id)">2</p>
+            </td>
+            <td>
+                <p id="three" onclick="replacer(this.id)">3</p>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <p id="four" onclick="replacer(this.id)">4</p>
+            </td>
+            <td>
+                <p id="five" onclick="replacer(this.id)">5</p>
+            </td>
+            <td>
+                <p id="six" onclick="replacer(this.id)">6</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <p id="seven" onclick="replacer(this.id)">7</p>
+            </td>
+            <td>
+                <p id="eigth" onclick="replacer(this.id)">8</p>
+            </td>
+            <td>
+                <p id="nine" onclick="replacer(this.id)">9</p>
+            </td>
+
+        </tr>
+
+        <p id="win">Winner will be annoucnetm</p>
+
+    </table>
+</body>
+<script>
+    var turn = true;
+    var final;
+    function winnerChecker() {
+        var cells = [[document.getElementById('one').innerHTML, document.getElementById('two').innerHTML, document.getElementById('three').innerHTML],
+        [document.getElementById('four').innerHTML, document.getElementById('five').innerHTML, document.getElementById('six').innerHTML],
+        [document.getElementById('seven').innerHTML, document.getElementById('eigth').innerHTML, document.getElementById('nine').innerHTML]];
+
+
+        //checking for each row 
+        for (var i = 0; i < 3; i++) {
+            if (cells[i][0] == cells[i][1] && cells[i][1] == cells[i][2]) {
+                return document.getElementById('win').innerHTML = "winner is" + cells[i][0];
+                final = true;
+
+            }
+
+        }
+
+        //checking for column
+        for (var j = 0; j < 3; j++) {
+            if (cells[0][j] == cells[1][j] && cells[1][j] == cells[2][j]) {
+                return document.getElementById('win').innerHTML = "winner is" + cells[0][j];
+                final = true;
+            }
+        }
+
+        var z = 0;
+        var rz = 2;
+        if (cells[z][z] == cells[z + 1][z + 1] && cells[z + 1][z + 1] == cells[z + 2][z + 2]) {
+            return document.getElementById('win').innerHTML = "winner is" + cells[z][z];
+            final = true;
+        }
+
+       
+            if (cells[0][2] == cells[1][1] && cells[1][1] == cells[2][0]) {
+                return document.getElementById('win').innerHTML = "winner is" + cells[0][2];
+                final = true;
+            }
+            
+            
+    if (final)  {
+    
+        for(var k = 0; k<3; k++){
+            cells[k][k+1]  = "Z";   
+        }
+
+
+    }
+}
+
+    function replacer(id) {
+        if (document.getElementById(id).innerHTML !== "") {
+            document.getElementById(id).innerHTML = turn ? 'O' : 'X';
+            turn = !turn;
+            winnerChecker();
+
+        }
+
+    }
+
+</script>
+
+</html>
