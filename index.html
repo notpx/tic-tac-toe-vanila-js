@@ -5,47 +5,122 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
 
     <style>
+
+        td>p{
+            color: rgb(0, 0, 0);
+        }
         * {
-            font-family: "Jura", sans-serif;
+
+            position: relative;
+            font-family: "Old Standard TT", serif;
+            font-weight: 400;
+            font-style: normal;
+            padding: 0;
+            margin: 0;
+            color: rgb(255, 255, 255);
         }
 
-        .main {
-            display: flex;
-            border: 2px;
-            border-radius: 3px;
+        #warn{
+            max-width: min-content;
+            padding-bottom: 3%;
+            font-size: 4vw;
+            
         }
 
-        .row {
-            margin: 2px;
+        #wrap {
+            background: rgb(0, 0, 0);
+           
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+
+        #main>#table {
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            width: 42vw;
+            color: rgb(255, 0, 51);
+            align-items: center;
+            background: rgb(34, 193, 195);
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(45, 253, 51, 1) 100%);
+            position: relative;
+        }
+
+
+
+        #main {
+            margin-top: 10%;
+            font-size: xx-large;
+            color: red;
+            position: relative;
+        }
+
+        #main>p {
+            margin-top: 4%;
+            margin-right: auto;
+            margin-left: auto;
+            max-width: fit-content;
         }
     </style>
 </head>
 
 <body>
-    <table id="table" border="3">
-        <tr>
-            <td><p id="one" onclick="replacer(this.id)">1</p></td>
-            <td><p id="two" onclick="replacer(this.id)">2</p></td>
-            <td><p id="three" onclick="replacer(this.id)">3</p></td>
-        </tr>
-        <tr>
-            <td><p id="four" onclick="replacer(this.id)">4</p></td>
-            <td><p id="five" onclick="replacer(this.id)">5</p></td>
-            <td><p id="six" onclick="replacer(this.id)">6</p></td>
-        </tr>
-        <tr>
-            <td><p id="seven" onclick="replacer(this.id)">7</p></td>
-            <td><p id="eight" onclick="replacer(this.id)">8</p></td>
-            <td><p id="nine" onclick="replacer(this.id)">9</p></td>
-        </tr>
-    </table>
+    <div id="wrap">
+        <div id="main">
+            <p id="warn"> Open another tab, play against each other.</p>
+            <table id="table" border="3">
+                <tr>
+                    <td>
+                        <p id="one" onclick="replacer(this.id)">1</p>
+                    </td>
+                    <td>
+                        <p id="two" onclick="replacer(this.id)">2</p>
+                    </td>
+                    <td>
+                        <p id="three" onclick="replacer(this.id)">3</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="four" onclick="replacer(this.id)">4</p>
+                    </td>
+                    <td>
+                        <p id="five" onclick="replacer(this.id)">5</p>
+                    </td>
+                    <td>
+                        <p id="six" onclick="replacer(this.id)">6</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="seven" onclick="replacer(this.id)">7</p>
+                    </td>
+                    <td>
+                        <p id="eight" onclick="replacer(this.id)">8</p>
+                    </td>
+                    <td>
+                        <p id="nine" onclick="replacer(this.id)">9</p>
+                    </td>
+                </tr>
+            </table>
+            <p id="win">Winner will be announced here...</p>
 
-    <p id="win">Winner will be announced</p>
+        </div>
+    </div>
+
+
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
